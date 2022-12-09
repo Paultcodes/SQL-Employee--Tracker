@@ -5,8 +5,6 @@ const cTable = require('console.table');
 const { type } = require('os');
 require('dotenv').config();
 
-
-
 //First question prompts when application is started
 const firstPrompt = () => {
   inquirer.prompt([quest.whatToDoQuestions]).then((data) => {
@@ -81,9 +79,9 @@ const updateEmployeeRole = (empName) => {
           ]);
         }
       );
+      console.log('Employee Updated!');
+      firstPrompt();
     });
-  console.log('Employee Updated!');
-  firstPrompt();
 };
 const getDataForEmployee = () => {
   db.query('SELECT * FROM role', async function (err, res) {
@@ -141,6 +139,7 @@ const addEmployee = (titleRole) => {
           );
         }
       );
+      firstPrompt();
     });
 };
 
@@ -160,7 +159,7 @@ const viewEmployees = () => {
   );
 };
 
-//Query for viewing all departments 
+//Query for viewing all departments
 const viewDepartments = () => {
   db.query('SELECT * FROM department', async function (err, results) {
     try {
@@ -171,7 +170,6 @@ const viewDepartments = () => {
     }
   });
 };
-
 
 //Prompts for adding department
 const addDepartment = () => {
